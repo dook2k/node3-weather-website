@@ -18,15 +18,19 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       callback(
         undefined,
-        `${body.daily.data[0].summary} It is currently ${
-          body.currently.temperature
-        } degrees out.  There is a ${
+        `${body.currently.summary} today.  Wind speeds of ${
+          body.daily.data[0].windSpeed
+        } m.p.h. with gusts up to ${
+          body.daily.data[0].windGust
+        } m.p.h. Currently ${body.currently.temperature} degrees. ${
           body.currently.precipProbability
-        } % chance of rain. Today's high will be ${
+        }% chance of precipitation today. High today of ${
           body.daily.data[0].temperatureHigh
-        } and today's low temperature will be ${
+        } degrees and low of ${
           body.daily.data[0].temperatureLow
-        }.  Humidity is ${body.daily.data[0].humidity * 100}%.`
+        } degrees.  Humidity is ${body.daily.data[0].humidity * 100}%. ${
+          body.daily.summary
+        }`
       );
     }
   });
